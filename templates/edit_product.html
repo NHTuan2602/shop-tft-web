@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="auth-box">
+    <h2 style="text-align: center; color: #facc15;">SỬA SẢN PHẨM #{{ product.id }}</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <label>Tên hiển thị:</label>
+        <input type="text" name="name" value="{{ product.name }}" required>
+        <label>Giá bán:</label>
+        <input type="number" name="price" value="{{ product.price }}" required>
+        
+        <div style="background: #334155; padding: 10px; margin: 10px 0;">
+            <img src="{{ product.image_url }}" style="height: 80px; display: block; margin-bottom: 5px;">
+            <label>Đổi ảnh:</label>
+            <input type="file" name="image_file" accept="image/*">
+        </div>
+        
+        <button type="submit" style="background: #facc15; color: #1e1e2e;">LƯU LẠI</button>
+    </form>
+</div>
+{% endblock %}

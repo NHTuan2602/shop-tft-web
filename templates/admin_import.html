@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="background: var(--bg-card); padding: 30px; border-radius: 8px;">
+    <h2><i class="bi bi-database-add"></i> NHẬP ACC VÀO KHO</h2>
+    <form method="POST">
+        <label>Chọn Sản Phẩm:</label>
+        <select name="product_id" style="width: 100%; padding: 12px; margin: 10px 0; background: #334155; color: white;">
+            {% for p in products %}
+                <option value="{{ p.id }}">{{ p.name }} (Tồn: {{ p.stock }})</option>
+            {% endfor %}
+        </select>
+        <label>Danh sách User|Pass (Mỗi acc 1 dòng):</label>
+        <textarea name="raw_data" rows="10"></textarea>
+        <button type="submit" style="background: #22c55e;">NHẬP KHO</button>
+    </form>
+</div>
+{% endblock %}

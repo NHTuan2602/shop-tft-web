@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="auth-box" style="max-width: 600px;">
+    <h2 style="text-align: center; color: #facc15;">CHỈNH SỬA ACC #{{ acc.id }}</h2>
+    
+    <form method="POST" enctype="multipart/form-data">
+        <label>Tên Skin:</label>
+        <input type="text" name="rank" value="{{ acc.rank }}" required>
+
+        <label>Giá tiền:</label>
+        <input type="number" name="price" value="{{ acc.price }}" required>
+
+        <div style="background: #334155; padding: 10px; border-radius: 4px; margin: 10px 0;">
+            <label>Ảnh hiện tại:</label>
+            <img src="{{ acc.image_url }}" style="height: 100px; display: block; margin-bottom: 10px;">
+            
+            <label>📤 Tải ảnh từ máy tính:</label>
+            <input type="file" name="image_file" accept="image/*">
+            
+            <label>🔗 Hoặc link ảnh Online:</label>
+            <input type="text" name="image_url" placeholder="https://..." value="{{ acc.image_url }}">
+        </div>
+
+        <label>Tài khoản Game:</label>
+        <input type="text" name="username" value="{{ acc.username }}" required>
+
+        <label>Mật khẩu Game:</label>
+        <input type="text" name="password" value="{{ acc.password }}" required>
+
+        <div style="margin: 20px 0; background: #334155; padding: 10px; border-radius: 4px;">
+            <label style="display: flex; align-items: center; cursor: pointer;">
+                <input type="checkbox" name="is_sold" {% if acc.is_sold %}checked{% endif %} style="width: 20px; height: 20px; margin-right: 10px;">
+                Đã bán (Khóa nút mua)
+            </label>
+        </div>
+
+        <button type="submit" style="background: #facc15; color: #1e1e2e;">LƯU THAY ĐỔI</button>
+    </form>
+</div>
+{% endblock %}

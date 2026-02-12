@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="background: var(--bg-card); padding: 30px; border-radius: 8px;">
+    <h2><i class="bi bi-bank"></i> NẠP TIỀN QUA NGÂN HÀNG</h2>
+    <div style="background: #334155; padding: 15px; border-radius: 6px; margin-bottom: 20px;">
+        <p>⚠️ Nội dung chuyển khoản: <strong style="color: #facc15;">NAP {{ current_user.username }}</strong></p>
+    </div>
+
+    <div style="display: flex; gap: 40px;">
+        <div style="flex: 1;">
+            <p>Ngân hàng: <strong>MB BANK</strong></p>
+            <p>Số tài khoản: <strong>0000 1111 2222</strong></p>
+            <p>Chủ tài khoản: <strong>NGUYEN VAN A</strong></p>
+            <p>Nội dung: <span style="color: #facc15; font-size: 1.2em; font-weight: bold;">NAP {{ current_user.username }}</span></p>
+            
+            <hr style="border-color: #334155; margin: 30px 0;">
+            
+            <form method="POST" action="/admin-add-money">
+                <p style="color: #94a3b8; font-style: italic;">(Tool Admin: Tự cộng tiền để test mua hàng)</p>
+                <input type="number" name="amount" placeholder="Nhập số tiền (VD: 500000)" required>
+                <button type="submit">Cộng tiền ngay</button>
+            </form>
+        </div>
+        <div style="flex: 1; text-align: center;">
+            <img src="https://via.placeholder.com/200?text=QR+CODE" style="border-radius: 10px;">
+            <p style="margin-top: 10px;">Quét mã QR</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

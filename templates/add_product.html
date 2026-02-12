@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="auth-box">
+    <h2 style="text-align: center; color: #facc15;">THÊM SẢN PHẨM</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <label>Tên hiển thị:</label>
+        <input type="text" name="name" required>
+        <label>Giá bán:</label>
+        <input type="number" name="price" required>
+        <label>Ảnh đại diện:</label>
+        <input type="file" name="image_file" accept="image/*">
+        <button type="submit" style="background: #facc15; color: #1e1e2e;">TẠO MỚI</button>
+    </form>
+</div>
+{% endblock %}

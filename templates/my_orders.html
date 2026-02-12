@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>LỊCH SỬ MUA HÀNG</h2>
+    <div class="acc-grid">
+        {% for acc in accounts %}
+        <div class="acc-card">
+            <div class="acc-body">
+                <div class="acc-title">{{ acc.product.name }}</div>
+                <div style="background: #0f172a; padding: 10px;">
+                    <div>TK: {{ acc.username }}</div>
+                    <div>MK: {{ acc.password }}</div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

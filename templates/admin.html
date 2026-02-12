@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2 style="color: #facc15;">QUẢN LÝ SẢN PHẨM</h2>
+    <div style="margin-bottom: 20px;">
+        <a href="/admin/add-product" class="btn-buy" style="width: auto; display: inline-block; padding: 10px 20px;">+ Tạo Sản Phẩm</a>
+        <a href="/admin/import" class="btn-buy" style="width: auto; display: inline-block; padding: 10px 20px; background: #15803d;">+ Nhập Kho</a>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th><th>Tên</th><th>Giá</th><th>Tồn Kho</th><th>Ảnh</th><th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in products %}
+                <tr>
+                    <td>#{{ p.id }}</td>
+                    <td style="font-weight: bold; color: #facc15;">{{ p.name }}</td>
+                    <td>{{ p.price | vnd }}</td>
+                    <td>{{ p.stock }} acc</td>
+                    <td><img src="{{ p.image_url }}" style="height: 40px;"></td>
+                    <td>
+                        <a href="/admin/edit-product/{{ p.id }}" class="btn-action edit">Sửa</a>
+                        <a href="/admin/delete-product/{{ p.id }}" class="btn-action delete" onclick="return confirm('Xóa sẽ mất hết acc trong kho?')">Xóa</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

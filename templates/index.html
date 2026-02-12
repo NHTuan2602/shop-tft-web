@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div style="background: #1e40af; padding: 15px; border-radius: 6px; margin-bottom: 20px; font-weight: bold;">
+        <i class="bi bi-fire"></i> SẢN PHẨM MỚI NHẤT
+    </div>
+
+    <div class="acc-grid">
+        {% for product in products %}
+        <div class="acc-card">
+            <img src="{{ product.image_url }}" class="acc-img">
+            <div class="acc-body">
+                <div class="acc-title">{{ product.name }}</div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                    <span class="acc-price">{{ product.price | vnd }}</span>
+                    <span style="font-size: 12px; background: #334155; padding: 3px 8px; border-radius: 4px; color: #facc15;">
+                        Kho: {{ product.stock }}
+                    </span>
+                </div>
+
+                {% if product.stock > 0 %}
+                    <a href="/buy-product/{{ product.id }}" class="btn-buy" onclick="return confirm('Xác nhận mua {{ product.name }}?')">
+                        <i class="bi bi-cart-plus"></i> MUA NGAY
+                    </a>
+                {% else %}
+                    <button class="btn-buy" style="background: #64748b; cursor: not-allowed;" disabled>HẾT HÀNG</button>
+                {% endif %}
+            </div>
+        </div>
+        {% else %}
+            <p>Chưa có sản phẩm nào.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="text-align: center; background: var(--bg-card); padding: 40px;">
+    <h1 style="color: #22c55e;">MUA THÀNH CÔNG!</h1>
+    <h3>{{ product.name }}</h3>
+    <div style="background: #0f172a; display: inline-block; padding: 20px; border-radius: 8px;">
+        <p>TK: <strong style="color: #facc15;">{{ account.username }}</strong></p>
+        <p>MK: <strong style="color: #facc15;">{{ account.password }}</strong></p>
+    </div>
+    <br><br>
+    <a href="/my-orders" class="btn-buy" style="display: inline-block; width: auto;">Xem lịch sử</a>
+</div>
+{% endblock %}
