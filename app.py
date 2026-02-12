@@ -255,8 +255,21 @@ def my_orders():
 def init_db():
     with app.app_context():
         db.create_all()
+        # Tạo Admin mặc định nếu chưa có
         if not User.query.filter_by(username="admin").first():
             db.session.add(User(username="admin", password=generate_password_hash("admin123", method='pbkdf2:sha256'), is_admin=True))
             db.session.commit()
+            print(">>> Đã tạo Admin mặc định!")
+        
+        # Tạo Sản phẩm mẫu nếu chưa có (Để web đỡ trống)
+        if not Product.query.first():
+            db.session.add(Product(name="Túi Mù May Mắn", price=20000, image_url="https://via.placeholder.com/150"))
+            db.session.commit()
 
-if __name__ == '__main__': init_db(); app.run(debug=False, host='0.0.0.0')
+# 2. GỌI HÀM NAY NGAY LẬP TỨC (Không để trong if main nữa)
+# Để khi Gunicorn khởi động, nó buộc phải chạy dòng này
+init_db()
+
+# 3. Chỉ chạy app.run khi test trên máy
+if __name__ == '__main__':
+    app.run(debug=True)
